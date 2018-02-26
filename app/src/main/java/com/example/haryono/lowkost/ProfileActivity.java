@@ -51,6 +51,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         buttonLogout.setOnClickListener(this);
     }
 
+    //listener untuk tombol logout
     @Override
     public void onClick(View view) {
         //if logout is pressed
