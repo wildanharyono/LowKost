@@ -1,6 +1,7 @@
 package com.example.haryono.lowkost;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -62,10 +63,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return;
         }
 
-        progressDialog.setMessage("Registering User");
-        progressDialog.show();
+//        progressDialog.setMessage("Registering User");
+//        progressDialog.show();
 
-        firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+        firebaseAuth.createUserWithEmailAndPassword(email,
+                password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
@@ -82,7 +84,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (view == buttonRegister){
             registerUser();
         }
-        if (view == textViewSignin){
-    }
+        if(view == textViewSignin){
+            //open login activity when user taps on the already registered textview
+            startActivity(new Intent(this, LoginActivity.class));
+        }
     }
 }
